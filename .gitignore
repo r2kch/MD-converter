@@ -1,0 +1,16 @@
+# Built artifact (rebuilt by ./build_app.sh)
+*.app/
+
+# Icon build intermediate (regenerate: python3 assets/make_logo.py assets)
+assets/AppIcon.iconset/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Throwaway test outputs
+*.md.test/
+
+#Test files
+test-files/

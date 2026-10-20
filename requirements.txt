@@ -1,0 +1,26 @@
+# Python to pin: 3.14  (verified on macOS 26.6.2 arm64, /opt/homebrew/bin/python3 == 3.14.4)
+#
+# Every key C-extension dependency below ships a prebuilt arm64 wheel for
+# Python 3.14 (verified with `pip install --only-binary :all:`), so the .app
+# venv needs NO source builds. This is why 3.14 is the pin (not 3.12/3.13):
+# the "will 3.14 be too new for wheels" risk did not materialize.
+#
+# Transitive deps (beautifulsoup4, lxml, Pillow, XlsxWriter, six, soupsieve,
+# et-xmlfile, typing_extensions, pymupdf_layout) are resolved by pip at the
+# versions that were present in the verified venv.
+
+# --- Converter runtime ---
+# .docx -> mammoth (docx -> semantic HTML) + markdownify (HTML -> GFM)
+mammoth==1.13.0
+markdownify==1.2.3
+# .pptx -> python-pptx (direct slide/placeholder iteration)
+python-pptx==1.0.2
+# .xlsx -> openpyxl (data_only=True for cached cell values)
+openpyxl==3.1.5
+# .pdf  -> PyMuPDF (pymupdf, used to silence parser notices) + pymupdf4llm (PDF -> markdown)
+PyMuPDF==2.0
+pymupdf4llm==2.0
+
+# --- GUI (needed by the other agent; confirmed importable on 3.14) ---
+pyobjc-core==12.2.2
+pyobjc-framework-Cocoa==12.2.2
